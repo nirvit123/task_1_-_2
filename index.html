@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Regex Matcher</title>
+    <style>
+        body { font-family: Arial; margin: 40px; background: #f5f5f5; }
+        .box { background: white; padding: 20px; width: 600px; border-radius: 8px; }
+        textarea, input { width: 100%; padding: 10px; margin: 10px 0; }
+        button { padding: 10px 20px; background: #4CAF50; color: white; border: none; }
+        .match { background: #d1ffd1; padding: 5px; margin: 5px 0; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Regex Matcher (regex101 clone)</h2>
+
+    <form method="POST">
+        <label>Test String</label>
+        <textarea name="test_string" rows="5">{{ test_string }}</textarea>
+
+        <label>Regex Pattern</label>
+        <input type="text" name="regex" value="{{ regex }}">
+
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+
+    {% if matches %}
+        <h3>Matches Found:</h3>
+        {% for m in matches %}
+            <div class="match">{{ m }}</div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+</body>
+</html>
